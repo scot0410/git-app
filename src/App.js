@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Terminal from 'react-terminal-component';
 import OutputDisplay from './display/OutputDisplay';
+import BasicTimeline from './display/TimelineTest';
+
 import TerminalDisplay from './terminal/TerminalDisplay'
 import {
   EmulatorState, OutputFactory, Outputs, FileSystem, CommandMapping, defaultCommandMapping
@@ -32,8 +34,12 @@ export default function App() {
           <TerminalDisplay />
         </Grid>
         <Grid item xs={6}>
-          <OutputDisplay/>
+        <BasicTimeline/>
         </Grid>
+        {/* <Grid item xs={6}>
+          // <OutputDisplay/>
+          // <BasicTimeline/>
+        </Grid> */}
       </Grid>
     </div>
   );

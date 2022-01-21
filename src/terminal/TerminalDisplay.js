@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect, setState, pros} from 'react'
 import ReactTerminal from 'react-terminal-component';
 
 import {
@@ -6,20 +6,41 @@ import {
   } from 'javascript-terminal';
 
 export default function TerminalDisplay(){
-  const customState = EmulatorState.create({
-    'commandMapping': CommandMapping.create({
-      ...defaultCommandMapping,
-      'print': {
-        'function': (state, opts) => {
-          const input = opts.join(' ');
+  const [input, setInput] = useState("")
 
-          return {
-            output: OutputFactory.makeTextOutput(input)
-          };
+  // useEffect(()=>{
+  //   setState(state => ({...state, input: props.input}));
+  //   console.log(`updated here ${input}`, )
+  // }, [props.input])
+
+  function collectCommand(opts) {
+    console.log(opts)
+  }
+
+  const customState = EmulatorState.create({
+      'commandMapping': CommandMapping.create({
+        ...defaultCommandMapping,
+        'print': {
+          'function': (state, opts) => {
+            const input = opts.join(' ');
+            return {
+              output: OutputFactory.makeTextOutput(input)
+            };
+          },
+          'optDef': {}
         },
-        'optDef': {}
-      }
+        'git': {
+          'function': (state, opts) => {
+            const input = opts.join(' ');
+            collectCommand(input);
+            return {
+              output: OutputFactory.makeTextOutput(input)
+            };
+          },
+          'optDef': {}
+        }
     }),
+    
     'fs': FileSystem.create({
       '/home': { },
       '/home/README': {content: 'This is a text file'},
@@ -29,7 +50,7 @@ export default function TerminalDisplay(){
   });
     return(
         <ReactTerminal
-          inputStr=''
+          inputStr={input}
           emulatorState={customState}
         />
     )
