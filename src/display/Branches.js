@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas } from 'reaflow';
 
-export default BasicTimeline => (
+export default Branches => (
   <Canvas
     maxWidth={800}
     maxHeight={600}

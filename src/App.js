@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import BasicTimeline from './display/TimelineTest';
+import BasicTimeline from './display/Branches';
 
 import TerminalDisplay from './terminal/TerminalDisplay'
 import {
@@ -31,12 +31,8 @@ export default function App() {
           <TerminalDisplay />
         </Grid>
         <Grid item xs={6}>
-        <BasicTimeline/>
+          <BasicTimeline/>
         </Grid>
-        {/* <Grid item xs={6}>
-          // <OutputDisplay/>
-          // <BasicTimeline/>
-        </Grid> */}
       </Grid>
     </div>
   );
