@@ -18,6 +18,7 @@
     "react-scripts": "4.0.2",
     "react-terminal-component": "^1.4.1",
     "react-tree-graph": "^5.1.0",
+    "reaflow": "^4.2.15",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
