@@ -24,10 +24,23 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function App() {
-  const [setBranches, branches] = useState([]);
+  // const [setNodes, nodes] = useState(); 
+  // const [setEdges, edges] = useState();
 
-  const collectCommand = (opts) =>  {
-    console.log("in app.js", opts); 
+  let nodes = [];
+  let edges = [];
+
+  const setOutput = (opts) =>  {
+    console.log("in app.js", opts);
+    nodes.push([{
+        id: '1',
+        text: 'tt'
+      }])
+      console.log("nodes", nodes);
+    // setNodes([{
+    //   id: '1',
+    //   text: 'tt'
+    // }])
   }
 
   const classes = useStyles();
@@ -35,10 +48,10 @@ export default function App() {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <TerminalDisplay collectCommand={collectCommand}/>
+          <TerminalDisplay collectCommand={setOutput}/>
         </Grid>
         <Grid item xs={6}>
-          <Branches />
+          <Branches nodes={nodes} edges={edges}/>
         </Grid>
       </Grid>
     </div>
