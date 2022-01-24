@@ -5,16 +5,11 @@ import {
     EmulatorState, OutputFactory, Outputs, FileSystem, CommandMapping, defaultCommandMapping
   } from 'javascript-terminal';
 
-export default function TerminalDisplay(){
+export default function TerminalDisplay(props){
   const [input, setInput] = useState("")
 
-  // useEffect(()=>{
-  //   setState(state => ({...state, input: props.input}));
-  //   console.log(`updated here ${input}`, )
-  // }, [props.input])
-
   function collectCommand(opts) {
-    console.log(opts)
+    props.collectCommand(opts);
   }
 
   const customState = EmulatorState.create({

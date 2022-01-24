@@ -1,36 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Canvas } from 'reaflow';
 
-export default Branches => (
-  <Canvas
+export default function Branches(props) {
+// useEffect(()=>{
+//   console.log("props", props)
+// }, [props]);
+
+let theseNodes = [
+  {
+    id: '1',
+    text: 'tt'
+  }
+]
+
+let edges = [
+  {
+    id: '1-2',
+    from: '1',
+    to: '2'
+  }
+]
+
+return (
+<Canvas
     maxWidth={800}
     maxHeight={600}
     direction={"UP"}
-    nodes={[
-      {
-        id: '1',
-        text: 'main'
-      },
-      {
-        id: '2',
-        text: '2'
-      },
-      {
-        id: '3',
-        text: '3'
-      }
-    ]}
-    edges={[
-      {
-        id: '1-2',
-        from: '1',
-        to: '2'
-      },
-      {
-        id: '1-3',
-        from: '1',
-        to: '3'
-      }
-    ]}
+    nodes={theseNodes}
+    edges={edges}
   />
-);
+)};

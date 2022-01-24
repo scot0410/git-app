@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import BasicTimeline from './display/Branches';
+import Branches from './display/Branches';
 
 import TerminalDisplay from './terminal/TerminalDisplay'
 import {
@@ -22,16 +22,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function App() {
+  const [setBranches, branches] = useState([]);
+
+  const collectCommand = (opts) =>  {
+    console.log("in app.js", opts); 
+  }
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <TerminalDisplay />
+          <TerminalDisplay collectCommand={collectCommand}/>
         </Grid>
         <Grid item xs={6}>
-          <BasicTimeline/>
+          <Branches />
         </Grid>
       </Grid>
     </div>
